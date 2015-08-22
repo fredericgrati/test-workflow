@@ -1,13 +1,18 @@
 machine:
   services:
     - docker
+  pre:
+    - sudo curl -sSL https://get.docker.com/ | sh
+
+dependencies:
+  override:
+    - pip install docker-compose
+    - docker version
 
 test:
   override:
-    - sudo pip install --upgrade docker-compose
-    - cd app
     - docker-compose run -d --no-deps web
-    - mocha
+    - cd app; mocha
 
 deployment:
   hub:
