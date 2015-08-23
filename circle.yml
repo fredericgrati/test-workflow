@@ -19,4 +19,4 @@ deployment:
   hub:
     branch: master
     commands:
-      - $DEPLOY
+      - curl --data "build=true" -X POST $DOCKER_HUB_URL_DEPLOY
